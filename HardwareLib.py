@@ -44,7 +44,7 @@ class Linux_UPS_Prober:
             self.upsPresent = False
     
     def get_current_load(self):
-        if upsPresent:
+        if self.upsPresent:
             upsLoad = float(subprocess.run(["apcaccess", "-up", "LOADPCT"], text=True, capture_output=True).stdout.strip())
             return (upsLoad / 100)*self.upsWattage
         else:
